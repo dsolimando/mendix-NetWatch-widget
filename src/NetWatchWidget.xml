@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget id="proximus.netwatch.NetWatchWidget" pluginWidget="true" needsEntityContext="true" offlineCapable="true"
+        supportedPlatform="Native"
+        xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
+    <name>Net Watch</name>
+    <description>NetWatchWidget widget</description>
+    <studioProCategory>Monitoring</studioProCategory>
+    <properties>
+        <propertyGroup caption="General">
+            <property key="visible" type="attribute">
+                <caption>Visible</caption>
+                <description>Whether to show or not netwatch</description>
+                <attributeTypes>
+                    <attributeType name="Boolean"/>
+                </attributeTypes>
+            </property>
+            <property key="enabled" type="attribute" >
+                <caption>Enabled</caption>
+                <description>Whether to enable or not netwatch</description>
+                <attributeTypes>
+                    <attributeType name="Boolean"/>
+                </attributeTypes>
+            </property>
+            <property key="onClose" type="action" required="false">
+                <caption>On Close</caption>
+                <description>To define</description>
+            </property>
+        </propertyGroup>
+    </properties>
+</widget>
