@@ -5,7 +5,7 @@
             <widgetFile path="NetWatchWidget.xml"/>
         </widgetFiles>
         <files>
-            <file path="proximus/netwatch"/>
+            <file path="proximus/netwatchwidget"/>
         </files>
     </clientModule>
 </package>
