@@ -1,9 +1,10 @@
 import { createElement, ReactElement, useCallback, useEffect, useState } from "react";
-import { NetWatchProps } from "../typings/NetWatchProps";
-import { Netwatch } from "react-native-netwatch";
+import { Netwatch } from "react-native-netwatch/lib/index";
 import { ValueStatus } from "mendix";
+import { NetWatchWidgetProps } from "../typings/NetWatchWidgetProps";
+import { ErrorBoundary } from "./ErrorBoundary";
 
-export function NetWatchWidget({ visible, onClose, enabled }: NetWatchProps<{}>): ReactElement {
+export function NetWatchWidget({ visible, onClose, enabled }: NetWatchWidgetProps<{}>): ReactElement {
     const onCloseHandler = useCallback(() => {
         if (onClose && onClose.canExecute && !onClose.isExecuting) {
             onClose.execute();
@@ -23,14 +24,17 @@ export function NetWatchWidget({ visible, onClose, enabled }: NetWatchProps<{}>)
     }, [visible.value, enabled.value]);
 
     return (
-        <Netwatch
-            onPressClose={() => {
-                onCloseHandler();
-            }}
-            useReactotron={false}
-            visible={visibleState}
-            enabled={enabledState}
-            interceptIOS={true}
-        />
+        /* @ts-ignore */
+        <ErrorBoundary>
+            <Netwatch
+                onPressClose={() => {
+                    onCloseHandler();
+                }}
+                useReactotron={false}
+                visible={visibleState}
+                enabled={enabledState}
+                interceptIOS={true}
+            />
+        </ErrorBoundary>
     );
 }
