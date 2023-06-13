@@ -4,7 +4,12 @@ import { ValueStatus } from "mendix";
 import { NetWatchWidgetProps } from "../typings/NetWatchWidgetProps";
 import { ErrorBoundary } from "./ErrorBoundary";
 
-export function NetWatchWidget({ visible, onClose, enabled }: NetWatchWidgetProps<{}>): ReactElement {
+export function NetWatchWidget({
+    visible,
+    onClose,
+    enabled,
+    loadMockPresetFromClipboard
+}: NetWatchWidgetProps<{}>): ReactElement {
     const onCloseHandler = useCallback(() => {
         if (onClose && onClose.canExecute && !onClose.isExecuting) {
             onClose.execute();
@@ -13,6 +18,7 @@ export function NetWatchWidget({ visible, onClose, enabled }: NetWatchWidgetProp
 
     const [visibleState, setVisibleState] = useState(false);
     const [enabledState, setEnabledState] = useState(true);
+    const [loadMockPresetFromClipboardState, setLoadMockPresetFromClipboardState] = useState(false);
 
     useEffect(() => {
         if (visible.status === ValueStatus.Available && visible.value !== undefined) {
@@ -21,7 +27,10 @@ export function NetWatchWidget({ visible, onClose, enabled }: NetWatchWidgetProp
         if (visible.status === ValueStatus.Available && enabled?.value !== undefined) {
             setEnabledState(enabled.value);
         }
-    }, [visible.value, enabled.value]);
+        if (visible.status === ValueStatus.Available && loadMockPresetFromClipboard?.value !== undefined) {
+            setLoadMockPresetFromClipboardState(loadMockPresetFromClipboard.value);
+        }
+    }, [visible.value, enabled.value, loadMockPresetFromClipboard.value]);
 
     return (
         /* @ts-ignore */
@@ -34,6 +43,7 @@ export function NetWatchWidget({ visible, onClose, enabled }: NetWatchWidgetProp
                 visible={visibleState}
                 enabled={enabledState}
                 interceptIOS={true}
+                loadMockPresetFromClipboard={loadMockPresetFromClipboardState}
             />
         </ErrorBoundary>
     );
