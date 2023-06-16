@@ -23,7 +23,7 @@
                 </attributeTypes>
             </property>
             <property key="loadMockPresetFromClipboard" type="attribute" >
-                <caption>Enabled</caption>
+                <caption>Load mock presets at launch</caption>
                 <description>Whether to enable loading mock preset from clipboard at widget startup</description>
                 <attributeTypes>
                     <attributeType name="Boolean"/>

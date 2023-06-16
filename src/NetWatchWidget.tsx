@@ -2,7 +2,7 @@ import { createElement, ReactElement, useCallback, useEffect, useState } from "r
 import { Netwatch } from "react-native-netwatch/lib/index";
 import { ValueStatus } from "mendix";
 import { NetWatchWidgetProps } from "../typings/NetWatchWidgetProps";
-import { ErrorBoundary } from "./ErrorBoundary";
+import { View } from "react-native";
 
 export function NetWatchWidget({
     visible,
@@ -24,17 +24,26 @@ export function NetWatchWidget({
         if (visible.status === ValueStatus.Available && visible.value !== undefined) {
             setVisibleState(visible.value);
         }
-        if (visible.status === ValueStatus.Available && enabled?.value !== undefined) {
+    }, [visible.status, visible.value]);
+
+    useEffect(() => {
+        if (enabled.status === ValueStatus.Available && enabled?.value !== undefined) {
             setEnabledState(enabled.value);
         }
-        if (visible.status === ValueStatus.Available && loadMockPresetFromClipboard?.value !== undefined) {
+    }, [enabled.status, enabled.value]);
+
+    useEffect(() => {
+        if (
+            loadMockPresetFromClipboard.status === ValueStatus.Available &&
+            loadMockPresetFromClipboard?.value !== undefined
+        ) {
             setLoadMockPresetFromClipboardState(loadMockPresetFromClipboard.value);
         }
-    }, [visible.value, enabled.value, loadMockPresetFromClipboard.value]);
+    }, [loadMockPresetFromClipboard.status, loadMockPresetFromClipboard.value]);
 
     return (
         /* @ts-ignore */
-        <ErrorBoundary>
+        <View style={{ height: 0, width: 0 }}>
             <Netwatch
                 onPressClose={() => {
                     onCloseHandler();
@@ -45,6 +54,6 @@ export function NetWatchWidget({
                 interceptIOS={true}
                 loadMockPresetFromClipboard={loadMockPresetFromClipboardState}
             />
-        </ErrorBoundary>
+        </View>
     );
 }
