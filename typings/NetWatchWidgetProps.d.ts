@@ -12,6 +12,8 @@ export interface NetWatchWidgetProps<Style> {
     visible: EditableValue<boolean>;
     enabled: EditableValue<boolean>;
     loadMockPresetFromClipboard: EditableValue<boolean>;
+    loadMockPresetFromInputParameters: EditableValue<boolean>;
+    mockPresetsFromJSONString?: EditableValue<string>;
     onClose?: ActionValue;
 }
 
@@ -27,5 +29,7 @@ export interface NetWatchWidgetPreviewProps {
     visible: string;
     enabled: string;
     loadMockPresetFromClipboard: string;
+    loadMockPresetFromInputParameters: string;
+    mockPresetsFromJSONString: string;
     onClose: {} | null;
 }

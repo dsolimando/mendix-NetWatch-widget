@@ -23,10 +23,24 @@
                 </attributeTypes>
             </property>
             <property key="loadMockPresetFromClipboard" type="attribute" >
-                <caption>Load mock presets at launch</caption>
+                <caption>LoadMockPresetFromClipboard</caption>
                 <description>Whether to enable loading mock preset from clipboard at widget startup</description>
                 <attributeTypes>
                     <attributeType name="Boolean"/>
+                </attributeTypes>
+            </property>
+            <property key="loadMockPresetFromInputParameters" type="attribute" >
+                <caption>LoadMockPresetFromInputParameters</caption>
+                <description>Whether to enable loading mock preset from input arguments at widget startup</description>
+                <attributeTypes>
+                    <attributeType name="Boolean"/>
+                </attributeTypes>
+            </property>
+            <property key="mockPresetsFromJSONString" type="attribute" required="false">
+                <caption>MockPresetsFromJSONString</caption>
+                <description>Whether to enable loading mock preset from this property at widget startup</description>
+                <attributeTypes>
+                    <attributeType name="String"/>
                 </attributeTypes>
             </property>
             <property key="onClose" type="action" required="false">

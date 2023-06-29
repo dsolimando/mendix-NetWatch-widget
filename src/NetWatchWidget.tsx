@@ -8,7 +8,9 @@ export function NetWatchWidget({
     visible,
     onClose,
     enabled,
-    loadMockPresetFromClipboard
+    loadMockPresetFromClipboard,
+    mockPresetsFromJSONString,
+    loadMockPresetFromInputParameters
 }: NetWatchWidgetProps<{}>): ReactElement {
     const onCloseHandler = useCallback(() => {
         if (onClose && onClose.canExecute && !onClose.isExecuting) {
@@ -19,6 +21,8 @@ export function NetWatchWidget({
     const [visibleState, setVisibleState] = useState(false);
     const [enabledState, setEnabledState] = useState(true);
     const [loadMockPresetFromClipboardState, setLoadMockPresetFromClipboardState] = useState(false);
+    const [mockPresetsState, setMockPresetsState] = useState([]);
+    const [loadMockPresetFromInputParametersState, setLoadMockPresetFromInputParametersState] = useState(false);
 
     useEffect(() => {
         if (visible.status === ValueStatus.Available && visible.value !== undefined) {
@@ -31,6 +35,24 @@ export function NetWatchWidget({
             setEnabledState(enabled.value);
         }
     }, [enabled.status, enabled.value]);
+
+    useEffect(() => {
+        if (
+            mockPresetsFromJSONString?.status === ValueStatus.Available &&
+            mockPresetsFromJSONString?.value !== undefined
+        ) {
+            setMockPresetsState(JSON.parse(mockPresetsFromJSONString.value));
+        }
+    }, [mockPresetsFromJSONString?.status, mockPresetsFromJSONString?.value]);
+
+    useEffect(() => {
+        if (
+            loadMockPresetFromInputParameters?.status === ValueStatus.Available &&
+            loadMockPresetFromInputParameters?.value !== undefined
+        ) {
+            setLoadMockPresetFromInputParametersState(loadMockPresetFromInputParameters.value);
+        }
+    }, [loadMockPresetFromInputParameters?.status, loadMockPresetFromInputParameters?.value]);
 
     useEffect(() => {
         if (
@@ -53,6 +75,8 @@ export function NetWatchWidget({
                 enabled={enabledState}
                 interceptIOS={true}
                 loadMockPresetFromClipboard={loadMockPresetFromClipboardState}
+                mockPresets={mockPresetsState}
+                loadMockPresetFromInputParameters={loadMockPresetFromInputParametersState}
             />
         </View>
     );
