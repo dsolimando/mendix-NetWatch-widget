@@ -16,13 +16,20 @@ import { Big } from "big.js";
  */
 export async function callMS() {
 	// BEGIN USER CODE
-	fetch('https://jsonplaceholder.typicode.com/todos/1')
-             .then(response => {
-               console.log(response.status);
-               return response.json();
-             })
-             .then(json => {
-               console.log(json);
-             });
+const xhr = new XMLHttpRequest();
+
+          xhr.open('GET', 'https://jsonplaceholder.typicode.com/todos/1');
+          xhr.send();
+
+          xhr.addEventListener('readystatechange', () => {
+            if (xhr.readyState === 4) {
+              console.log(xhr.status);
+              console.log(xhr.response);
+            }
+          });
+
+          xhr.ontimeout = () => {
+            console.log('timeout');
+          };
 	// END USER CODE
 }
