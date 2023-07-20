@@ -6,7 +6,7 @@ React Native Netwatch is a powerful debugging tool for your Mendix Native apps. 
 
 With React Native Netwatch, you can inspect all HTTP requests, track network connection changes, and manipulate responses for robust application testing. It even includes dark and light themes for a comfortable debugging experience in any lighting condition. 
 
-To leverage its full power and for more detailed information on usage and examples, we invite you to check out the [complete documentation](https://github.com/arnaudambro/react-native-netwatch) on the GitHub page of React Native Netwatch.
+To leverage its full power and for more detailed information on usage and examples, we invite you to check out the [complete documentation](https://github.com/odemolliens/react-native-netwatch) on the GitHub page of React Native Netwatch.
 
 ## Dependencies
 
