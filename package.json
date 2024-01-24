@@ -1,7 +1,7 @@
 {
   "name": "mendix-netwatch-widget",
   "widgetName": "NetWatchWidget",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "NetWatch widget",
   "copyright": "Proximus, all right reserved",
   "author": "Damien Solimando",
@@ -28,7 +28,7 @@
     "@types/react-native": "0.64.2",
     "react-native-device-info": "8.0.1",
     "@react-native-community/netinfo": "5.9.7",
-    "react-native-netwatch": "^1.3.15",
+    "react-native-netwatch": "^1.3.16",
     "react-native-paper": "^4.12.5",
     "react-native-safe-area-context": "^4.5.0",
     "react-native-share": "^8.2.1",
