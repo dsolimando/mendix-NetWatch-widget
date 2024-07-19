@@ -26,6 +26,7 @@ export interface NetWatchWidgetPreviewProps {
     style: string;
     styleObject?: CSSProperties;
     readOnly: boolean;
+    renderMode?: "design" | "xray" | "structure";
     visible: string;
     enabled: string;
     loadMockPresetFromClipboard: string;
